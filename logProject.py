@@ -28,12 +28,9 @@ query_3 = (
 
 def connect(database_name="news"):
     """connect to database"""
-    try:
-        db = psycopg2.connect("dbname={}".format(database_name))
-        cursor = db.cursor()
-        return db, cursor
-    except:
-            print("Unable to connect to database")
+    db = psycopg2.connect("dbname={}".format(database_name))
+    cursor = db.cursor()
+    return db, cursor
 
 
 def get_query_results(query):
@@ -47,13 +44,13 @@ def get_query_results(query):
 def print_query_results(query_results):
     """prints results for first two queries"""
     for results in query_results:
-        print (results[0], " - ", results[1], "views")
+        print(results[0], " - ", results[1], "views")
 
 
 def print_error_results(query_results):
     """prints results for error query"""
     for results in query_results:
-        print (results[0], results[1], "% errors")
+        print(results[0], results[1], "% errors")
 
 
 if __name__ == '__main__':
